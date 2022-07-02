@@ -6,13 +6,15 @@ import { Component, OnInit } from '@angular/core';
   <h2>
     First trial below is:
   </h2>
-  <button (click)="getStart()">Click Here!</button>
+  <input [id]="myId" type="text" value="Vishwas">
+  <input [disabled]="true" id="{{myId}}" type="text" value="Vishwas">
   {{trial}}
   `,
   styleUrls: ['./courses.component.css']
 })
 export class CoursesComponent implements OnInit {
-  trial = "";
+  public trial = "";
+  public myId = "testId";
 
   constructor() {
     
