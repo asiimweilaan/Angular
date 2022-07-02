@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgModule } from '@angular/core';
 
 @Component({
   selector: 'app-courses',
@@ -6,8 +6,10 @@ import { Component, OnInit } from '@angular/core';
   <h2>
     First trial below is:
   </h2>
-  <input #myInput type="text">
-  <button (click)="logMessage(myInput.value)">Click</button>
+  <!-- <input #myInput type="text"> -->
+  <!-- <button (click)="logMessage(myInput.value)">Click</button> -->
+  <input [(ngModel)]="name" type="text">
+  {{name}}
   
   {{greeting}}
   {{trial}}
@@ -23,6 +25,7 @@ import { Component, OnInit } from '@angular/core';
   `]
 })
 export class CoursesComponent implements OnInit {
+  public name="";
   public trial = "";
   public myId = "testId";
   public hasError = false;
