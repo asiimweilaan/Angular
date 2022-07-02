@@ -6,9 +6,13 @@ import { Component, OnInit, NgModule } from '@angular/core';
   <h2>
     First trial below is:
   </h2>
-  <!-- <input #myInput type="text"> -->
-  <!-- <button (click)="logMessage(myInput.value)">Click</button> -->
-  <input [(ngModel)]="name" type="text">
+  <div *ngIf="displayName;then thenBlock;else elseBlock"></div>
+  <ng-template #thenBlock>
+    <h2>Codevolution</h2>
+  </ng-template>
+  <ng-template #elseBlock>
+    <h2>Name is hidden</h2>
+  </ng-template>
   {{name}}
   
   {{greeting}}
@@ -25,11 +29,10 @@ import { Component, OnInit, NgModule } from '@angular/core';
   `]
 })
 export class CoursesComponent implements OnInit {
+  displayName = true;
   public name="";
   public trial = "";
   public myId = "testId";
-  public hasError = false;
-  public isSpecial = true;
   public highlightColor = 'yellow';
   public greeting ="";
 
@@ -47,10 +50,6 @@ export class CoursesComponent implements OnInit {
   }
   logMessage(value:string){
     console.log(value);
-  }
-  public messageClasses = {
-    "text-special":this.hasError,
-    "text-danger":!this.hasError
   }
 
   onClick(event:Event){
