@@ -6,13 +6,17 @@ import { Component, OnInit, NgModule } from '@angular/core';
   <h2>
     First trial below is:
   </h2>
-  <div *ngIf="displayName;then thenBlock;else elseBlock"></div>
-  <ng-template #thenBlock>
-    <h2>Codevolution</h2>
-  </ng-template>
-  <ng-template #elseBlock>
-    <h2>Name is hidden</h2>
-  </ng-template>
+  
+  <div *ngFor="let color of colors;even as i">
+    <h2>{{i}} {{color}}</h2>
+  </div>
+  <!-- <div [ngSwitch]="color">
+    <div *ngSwitchCase="'red'">You picked the red color</div>
+    <div *ngSwitchCase="'blue'">You picked the blue color</div>
+    <div *ngSwitchCase="'green'">You picked the green color</div>
+
+  </div> -->
+
   {{name}}
   
   {{greeting}}
@@ -29,6 +33,8 @@ import { Component, OnInit, NgModule } from '@angular/core';
   `]
 })
 export class CoursesComponent implements OnInit {
+  public colors = ["red","blue","green"];
+  public color = "red";
   displayName = true;
   public name="";
   public trial = "";
