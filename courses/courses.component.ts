@@ -6,13 +6,9 @@ import { Component, OnInit } from '@angular/core';
   <h2>
     First trial below is:
   </h2>
+  <input #myInput type="text">
+  <button (click)="logMessage(myInput.value)">Click</button>
   
-  <h2 [ngClass]="messageClasses">ThisColortesting</h2>
-  <h2 [style.color] = "highlightColor">Testing out style binding</h2>
-  <h2 [style.color] = "hasError? 'red':'cyan'">Testing out style binding</h2>
-  <button (click)="onClick($event)">Click</button>
-  <button (click)="greeting='RocketShip'">Click here</button>
-
   {{greeting}}
   {{trial}}
   `,
@@ -45,6 +41,9 @@ export class CoursesComponent implements OnInit {
   getStart(){
     this.trial = "Impressive";
 
+  }
+  logMessage(value:string){
+    console.log(value);
   }
   public messageClasses = {
     "text-special":this.hasError,
