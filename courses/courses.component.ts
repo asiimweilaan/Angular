@@ -1,10 +1,10 @@
-import { Component, OnInit, NgModule, Input } from '@angular/core';
+import { Component, OnInit, NgModule, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-courses',
   template: `
     <h2>{{"Hello "+parentData}}</h2>
-
+    <button (click)="fireEvent()">Send Event</button>
   `,
   styles: [`
   .text-special{
@@ -19,10 +19,14 @@ import { Component, OnInit, NgModule, Input } from '@angular/core';
 export class CoursesComponent implements OnInit {
   
   @Input() public parentData;
+  @Output() public childEvent = new EventEmitter();
 
   constructor() {
     
 
+  }
+  fireEvent(){
+    this.childEvent.emit('Hey Codevolution');
   }
 
   ngOnInit(): void {
