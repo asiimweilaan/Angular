@@ -6,10 +6,14 @@ import { Component, OnInit } from '@angular/core';
   <h2>
     First trial below is:
   </h2>
+  
   <h2 [ngClass]="messageClasses">ThisColortesting</h2>
   <h2 [style.color] = "highlightColor">Testing out style binding</h2>
   <h2 [style.color] = "hasError? 'red':'cyan'">Testing out style binding</h2>
+  <button (click)="onClick($event)">Click</button>
+  <button (click)="greeting='RocketShip'">Click here</button>
 
+  {{greeting}}
   {{trial}}
   `,
   styles: [`
@@ -28,6 +32,7 @@ export class CoursesComponent implements OnInit {
   public hasError = false;
   public isSpecial = true;
   public highlightColor = 'yellow';
+  public greeting ="";
 
   constructor() {
     
@@ -44,6 +49,12 @@ export class CoursesComponent implements OnInit {
   public messageClasses = {
     "text-special":this.hasError,
     "text-danger":!this.hasError
+  }
+
+  onClick(event:Event){
+    console.log(event);
+    this.greeting = 'Welcome to Coding of the evolution';
+
   }
 
 }
