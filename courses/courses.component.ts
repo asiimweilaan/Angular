@@ -6,9 +6,10 @@ import { Component, OnInit } from '@angular/core';
   <h2>
     First trial below is:
   </h2>
-  
-  <h2 class="text-special">Coloring is fun</h2>
-  <h2 [class.text-danger]="hasError">This is the green text</h2>
+  <h2 [ngClass]="messageClasses">ThisColortesting</h2>
+  <h2 [style.color] = "highlightColor">Testing out style binding</h2>
+  <h2 [style.color] = "hasError? 'red':'cyan'">Testing out style binding</h2>
+
   {{trial}}
   `,
   styles: [`
@@ -24,8 +25,10 @@ import { Component, OnInit } from '@angular/core';
 export class CoursesComponent implements OnInit {
   public trial = "";
   public myId = "testId";
-  public hasError = true;
-  
+  public hasError = false;
+  public isSpecial = true;
+  public highlightColor = 'yellow';
+
   constructor() {
     
 
@@ -37,6 +40,10 @@ export class CoursesComponent implements OnInit {
   getStart(){
     this.trial = "Impressive";
 
+  }
+  public messageClasses = {
+    "text-special":this.hasError,
+    "text-danger":!this.hasError
   }
 
 }
